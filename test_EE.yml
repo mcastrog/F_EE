@@ -1,5 +1,5 @@
 - name: Test EE with Azure collection on Controller 3
-  hosts: controller3
+  hosts: all
   gather_facts: false
 
   tasks:
