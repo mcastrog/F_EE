@@ -1,15 +1,23 @@
----
-- name: Probar EE con dependencias de Azure
-  hosts: localhost
-  connection: local
+- name: Test EE with Azure collection on Controller 3
+  hosts: controller3
   gather_facts: false
 
   tasks:
-    - name: Listar resource groups en Azure
+    - name: Check system Python packages (should not have azure libs)
+      command: pip3 list
+      register: pip_list_output
+      ignore_errors: yes
+
+    - name: Show installed system packages
+      debug:
+        var: pip_list_output.stdout_lines
+
+    - name: Try Azure module from EE (should work even if not installed on system)
       azure.azcollection.azure_rm_resourcegroup_info:
         auth_source: auto
-      register: rg_list
+      register: result
+      ignore_errors: yes
 
-    - name: Mostrar los resource groups encontrados
+    - name: Show result of Azure module call
       debug:
-        var: rg_list
+        var: result
