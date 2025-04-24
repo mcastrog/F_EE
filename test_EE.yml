@@ -1,0 +1,15 @@
+---
+- name: Probar EE con dependencias de Azure
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Listar resource groups en Azure
+      azure.azcollection.azure_rm_resourcegroup_info:
+        auth_source: auto
+      register: rg_list
+
+    - name: Mostrar los resource groups encontrados
+      debug:
+        var: rg_list
