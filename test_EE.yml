@@ -4,12 +4,12 @@
 
   tasks:
     - name: Check system Python packages (should not have azure libs)
-      command: pip3 list
+      ansible.builtin.command: pip3 list
       register: pip_list_output
       ignore_errors: yes
 
     - name: Show installed system packages
-      debug:
+      ansible.builtin.debug:
         var: pip_list_output.stdout_lines
 
     - name: Try Azure module from EE (should work even if not installed on system)
@@ -19,5 +19,5 @@
       ignore_errors: yes
 
     - name: Show result of Azure module call
-      debug:
+      ansible.builtin.debug:
         var: result
