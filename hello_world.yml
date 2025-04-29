@@ -6,4 +6,4 @@
   tasks:
     - name: Mostrar mensaje Hello World
       ansible.builtin.debug:
-        msg: "Hola mundo"
+        msg: "Hello world v1"
