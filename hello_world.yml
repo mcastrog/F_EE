@@ -1,7 +1,7 @@
 ---
 - name: Playbook de ejemplo Hello World
   hosts: all
-  gather_facts: no
+  gather_facts: false
 
   tasks:
     - name: Mostrar mensaje Hello World
