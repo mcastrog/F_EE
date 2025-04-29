@@ -4,6 +4,6 @@
   gather_facts: false
 
   tasks:
-    - name: Mostrar mensaje Hello World
+    - name: Show text Hello World
       ansible.builtin.debug:
         msg: "Hello world v1"
