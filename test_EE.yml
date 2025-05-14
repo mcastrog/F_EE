@@ -4,6 +4,13 @@
   gather_facts: false
 
   tasks:
+    - name: Mostrar la ruta de Python (debería estar dentro del EE)
+      ansible.builtin.command: which python3
+      register: python_path
+
+    - debug:
+        var: python_path.stdout
+
     - name: Check system Python packages (should not have azure libs)
       ansible.builtin.command: pip3 list
       register: pip_list_output
