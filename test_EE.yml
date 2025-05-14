@@ -1,6 +1,7 @@
 - name: Test EE with Azure collection on Controller 3
-  hosts: all
+  hosts: localhost
   gather_facts: false
+  connection: local
 
   tasks:
     - name: Mostrar la ruta de Python (debería estar dentro del EE)
