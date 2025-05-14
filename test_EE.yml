@@ -1,14 +1,14 @@
 - name: Test EE with Azure collection on Controller 3
-  hosts: localhost
-  connection: local
+  hosts: all
   gather_facts: false
 
   tasks:
     - name: Mostrar la ruta de Python (debería estar dentro del EE)
       ansible.builtin.command: which python3
       register: python_path
-
-    - debug:
+      
+    - name: Mostrar salida
+      ansible.builtin.debug:
         var: python_path.stdout
 
     - name: Check system Python packages (should not have azure libs)
